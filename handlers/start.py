@@ -1,7 +1,6 @@
 from aiogram import Router, types
 from aiogram.filters.command import Command
-from aiogram import  F
-
+from aiogram import F
 
 start_router = Router()
 
@@ -19,9 +18,10 @@ async def start_handler(message):
             ],
             [
                 types.InlineKeyboardButton(text='Вакансии', callback_data='jobs'),
-                types.InlineKeyboardButton(text='Меню', callback_data='Menu')
+                types.InlineKeyboardButton(text='Меню', callback_data='Menu'),
+                types.InlineKeyboardButton(text='Оставьте свой оч   тзыв', callback_data='feedback')
             ]
-        ]
+        ],
 
     )
     await message.reply(f"Добро пожаловать {message.from_user.first_name}! В наше кафе", reply_markup=kb)
