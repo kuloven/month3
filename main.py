@@ -11,6 +11,7 @@ from handlers.review_dialog import review_router
 
 async def on_startup(bot: Bot):
     database.create_tables()
+
 async def main():
     # запуск бота
     dp.include_router(start_router)

@@ -4,6 +4,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters.command import Command
 from AllHomework.bot_config import database
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 review_router = Router()
 
@@ -51,34 +52,41 @@ async def process_visit_date(message: types.Message, state: FSMContext):
     await state.set_state(RestourantReview.food_rating)
     kb = types.ReplyKeyboardMarkup(
         keyboard=[
-            [types.KeyboardButton(text='Хорошо')],
-            [types.KeyboardButton(text='Плохо')],
-            [types.KeyboardButton(text='Нормально')]
+            [types.KeyboardButton(text='1'), types.KeyboardButton(text='2'), types.KeyboardButton(text='3')],
+            [types.KeyboardButton(text='4'), types.KeyboardButton(text='5')]
         ],
         resize_keyboard=True
     )
-    await message.answer('Как оцениваете качество еды?', reply_markup=kb)
+    await message.answer('Как оцениваете качество еды? (1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
+                         ' 4 - Хорошо, 5 - Отлично)', reply_markup=kb)
 
 
 @review_router.message(RestourantReview.food_rating)
 async def process_food_rating(message: types.Message, state: FSMContext):
-    await state.update_data(food_rating=message.text)
+    food_rating = message.text
+    if food_rating not in ['1', '2', '3', '4', '5']:
+        await message.answer('Пожалуйста, выберите рейтинг от 1 до 5')
+        return
+    await state.update_data(food_rating=food_rating)
     await state.set_state(RestourantReview.cleanliness_rating)
     kb = types.ReplyKeyboardMarkup(
         keyboard=[
-            [types.KeyboardButton(text='Чисто')],
-            [types.KeyboardButton(text='Грязно')],
-            [types.KeyboardButton(text='Пыльно')],
-            [types.KeyboardButton(text='Нормально')]
+            [types.KeyboardButton(text='1'), types.KeyboardButton(text='2'), types.KeyboardButton(text='3')],
+            [types.KeyboardButton(text='4'), types.KeyboardButton(text='5')]
         ],
         resize_keyboard=True
     )
-    await message.answer('Как оцениваете чистоту заведения?', reply_markup=kb)
+    await message.answer('Как оцениваете чистоту заведения? (1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
+                         ' 4 - Хорошо, 5 - Отлично)', reply_markup=kb)
 
 
 @review_router.message(RestourantReview.cleanliness_rating)
 async def process_cleanliness_rating(message: types.Message, state: FSMContext):
-    await state.update_data(cleanliness_rating=message.text)
+    cleanliness_rating = message.text
+    if cleanliness_rating not in ['1', '2', '3', '4', '5']:
+        await message.answer('Пожалуйста, выберите рейтинг от 1 до 5')
+        return
+    await state.update_data(cleanliness_rating=cleanliness_rating)
     await state.set_state(RestourantReview.extra_comments)
     kb = types.ReplyKeyboardRemove()
     await message.answer('Дополнительный комментарий:', reply_markup=kb)
@@ -97,4 +105,3 @@ async def process_extra_comments(message: types.Message, state: FSMContext):
 
     await state.clear()
     await message.answer("Спасибо за пройденный опрос")
-
