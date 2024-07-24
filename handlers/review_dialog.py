@@ -57,7 +57,7 @@ async def process_visit_date(message: types.Message, state: FSMContext):
         ],
         resize_keyboard=True
     )
-    await message.answer('Как оцениваете качество еды? (1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
+    await message.answer('Как оцениваете качество еды? \n (1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
                          ' 4 - Хорошо, 5 - Отлично)', reply_markup=kb)
 
 
@@ -76,7 +76,7 @@ async def process_food_rating(message: types.Message, state: FSMContext):
         ],
         resize_keyboard=True
     )
-    await message.answer('Как оцениваете чистоту заведения? (1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
+    await message.answer('Как оцениваете чистоту заведения? \n(1 - Очень плохо, 2 - Плохо, 3 - Нормально,'
                          ' 4 - Хорошо, 5 - Отлично)', reply_markup=kb)
 
 

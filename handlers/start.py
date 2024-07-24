@@ -19,7 +19,7 @@ async def start_handler(message):
             [
                 types.InlineKeyboardButton(text='Вакансии', callback_data='jobs'),
                 types.InlineKeyboardButton(text='Меню', callback_data='Menu'),
-                types.InlineKeyboardButton(text='Оставьте свой оч   тзыв', callback_data='feedback')
+                types.InlineKeyboardButton(text='Оставьте свой отзыв', callback_data='feedback')
             ]
         ],
 

@@ -8,5 +8,6 @@ echo_router = Router()
 async def echo_handler(message):
     await message.answer("Я вас не понимаю, вот команды которые я понимаю: "
                          "/start - начало \n /myinfo - информация \n /random_recipe - рандомный рецепт \n "
-                         "/feedback - Отзыв"
-                         )
+                         "/feedback - Отзыв \n /menu")
+
+
