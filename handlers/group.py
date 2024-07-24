@@ -1,4 +1,4 @@
-from AllHomework.bot_config import bot, dp
+from month3.bot_config import bot, dp
 from aiogram import types, Router, F
 from aiogram.filters import Command
 import random
