@@ -3,7 +3,7 @@ from aiogram import Router, F, types
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters.command import Command
-from AllHomework.bot_config import database
+from month3.bot_config import database
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 review_router = Router()

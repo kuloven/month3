@@ -1,5 +1,5 @@
 from aiogram import Router, F, types
-from AllHomework import database
+from month3 import database
 
 dishes_router = Router()
 

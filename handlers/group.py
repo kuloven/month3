@@ -4,7 +4,7 @@ from aiogram.filters import Command
 import random
 from aiogram.types import FSInputFile
 from profanity_check import predict_prob
-from AllHomework.bot_config import group
+from month3.bot_config import group
 
 
 group_router = Router()
