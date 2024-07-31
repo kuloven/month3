@@ -1,5 +1,4 @@
 from aiogram import Router, F, types
-from month3 import database
 
 dishes_router = Router()
 
@@ -9,7 +8,7 @@ async def dishes_handler(message: types.Message):
     photo = types.FSInputFile('images_2/cola.jpg')
     await message.answer_photo(
         photo=photo,
-        caption="Холодный кола")
+        caption="Холодная кола")
 
 @dishes_router.message(F.text == 'Хинкали')
 async def dishes_handler(message: types.Message):
@@ -20,7 +19,7 @@ async def dishes_handler(message: types.Message):
 
 @dishes_router.message(F.text == 'Блинчики')
 async def dishes_handler(message: types.Message):
-    photo4 = types.FSInputFile('images_2/blinchiki.jpg')
+    photo3 = types.FSInputFile('images_2/blinchiki.jpg')
     await message.answer_photo(
-        photo=photo4,
+        photo=photo3,
         caption='Блинчики')

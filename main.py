@@ -10,9 +10,12 @@ from handlers.dishes import dishes_router
 from handlers.review_dialog import review_router
 from handlers.menu import menu_router
 from handlers.group import group_router
+from handlers.house_kg import house_router
+
 
 async def on_startup(bot: Bot):
     database.create_tables()
+
 
 async def main():
     # запуск бота
@@ -23,6 +26,7 @@ async def main():
     dp.include_router(dishes_router)
     dp.include_router(menu_router)
     dp.include_router(group_router)
+    dp.include_router(house_router)
     # В конце
     dp.include_router(echo_router)
     # При запуске

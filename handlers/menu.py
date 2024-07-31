@@ -1,9 +1,10 @@
 from aiogram import Router, F, types
 from aiogram.filters.command import Command
-from month3.bot_config import database
+from AllHomework.bot_config import database
 from aiogram.types import FSInputFile
 
 menu_router = Router()
+
 
 @menu_router.message(Command('menu'))
 async def menu(message: types.Message):
